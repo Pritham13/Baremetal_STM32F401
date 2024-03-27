@@ -5,7 +5,7 @@
 
 //Macros
 #define BIT(x) (1U<<(x))
-#define PIN (bank,num) (((bank)-'A')<<8|num)
+#define PIN (bank) ((bank)-'A')
 #define PINBANK(pin) (pin>>8)
 #define PINNO(pin) (pin & 255)
 
@@ -18,7 +18,8 @@ typedef struct systick {
 
 
 typedef struct gpio {
-  volatile uint32_t MODER, OTYPER, OSPEEDR, PUPDR, IDR, ODR, BSRR, LCKR, AFR[2];
+
+  volatile uint32_t MODER, OTYPER, OSPEEDR, PUPDR  IDR, ODR, BSRR, LCKR, AFR[2];
 }gpio;
 #define GPIO(bank) ((struct gpio *) (0x40020000 + 0x400 * (bank)))
 
